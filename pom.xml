@@ -6,7 +6,7 @@
 
   <groupId>tz.co.ubx</groupId>
   <artifactId>july-weekend-evening-git</artifactId>
-  <version>v1.0.0</version>
+  <version>v1.0.1</version>
   <packaging>jar</packaging>
 
   <name>July Weekend Batch</name>
