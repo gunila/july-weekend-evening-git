@@ -34,7 +34,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>HelloWorld</mainClass> <!-- Replace with actual class -->
+              <mainClass>basic.HelloWorld</mainClass> <!-- Replace with actual class -->
             </manifest>
           </archive>
         </configuration>
