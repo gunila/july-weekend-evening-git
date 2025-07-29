@@ -7,15 +7,25 @@
   <groupId>tz.co.ubx</groupId>
   <artifactId>july-weekend-evening-git</artifactId>
   <version>v1.0.3</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>July Weekend Batch</name>
   <description>git demo project</description>
 
+  <dependencies>
+    <!-- Servlet API for compilation, provided by Tomcat at runtime -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
     <plugins>
-      <!-- JAR plugin -->
+      <!-- JAR plugin is optional and can be removed for WAR projects -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
