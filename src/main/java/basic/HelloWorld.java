@@ -12,7 +12,7 @@ public class HelloWorld {
 		System.out.print("New message here!");//from c1 branch and a more to come
 	}
 	
-	public void showOldMessage() {
+	public void showOldMessages() {
 		System.out.print("Old message here!");//from c1+ branch and a more to come
 	}
 
