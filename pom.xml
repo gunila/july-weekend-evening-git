@@ -2,18 +2,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>tz.co.ubx</groupId>
   <artifactId>july-weekend-evening-git</artifactId>
   <version>v1.0.3</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>  <!-- main artifact will be JAR -->
 
   <name>July Weekend Batch</name>
   <description>git demo project</description>
 
   <dependencies>
-    <!-- Servlet API for compilation, provided by Tomcat at runtime -->
+    <!-- Servlet API needed for compilation but provided by container at runtime -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -25,7 +26,7 @@
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
     <plugins>
-      <!-- JAR plugin is optional and can be removed for WAR projects -->
+      <!-- JAR plugin config (optional since default packaging is jar) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -39,7 +40,7 @@
         </configuration>
       </plugin>
 
-      <!-- WAR plugin -->
+      <!-- WAR plugin to build the war -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -58,14 +59,14 @@
         </configuration>
       </plugin>
 
-      <!-- Attach WAR as additional artifact -->
+      <!-- Attach WAR as an additional artifact with classifier -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <version>3.3.0</version>
         <executions>
           <execution>
-            <id>attach-artifacts</id>
+            <id>attach-war</id>
             <phase>package</phase>
             <goals>
               <goal>attach-artifact</goal>
@@ -75,12 +76,15 @@
                 <artifact>
                   <file>${project.build.directory}/${project.build.finalName}.war</file>
                   <type>war</type>
+                  <classifier>war</classifier>  <!-- IMPORTANT: classifier distinguishes artifact -->
                 </artifact>
               </artifacts>
             </configuration>
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
+
 </project>
