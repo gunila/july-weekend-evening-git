@@ -19,10 +19,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'php' ]  # adjust as needed
+        language: [ 'java' ]  # Set to Java only
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Build with Maven # Or use Gradle if appropriate
+        run: mvn clean compile
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
