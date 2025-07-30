@@ -19,7 +19,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'php' ]  # adjust as needed
+        language: [ 'java', 'javascript' ]  # Include javascript for compatibility
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -28,6 +29,15 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
+
+      # Only build Java — JavaScript doesn't need a build step
+      - name: Build with Maven
+        if: matrix.language == 'java'
+        run: mvn install -DskipTests
+
+      - name: No build needed for JavaScript
+        if: matrix.language == 'javascript'
+        run: echo "Skipping JS build step (not actively scanned)"
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
