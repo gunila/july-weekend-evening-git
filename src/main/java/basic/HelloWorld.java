@@ -15,5 +15,8 @@ public class HelloWorld {
 	public void showOldMessages() {
 		System.out.print("Old message here!");//from c1+ branch and a more to come
 	}
+	public void showCodeQL() {
+		System.out.print("Lets test if CodeQL works automatically in git main branch!");//from c1+ branch and a more to come
+	}
 
 }
