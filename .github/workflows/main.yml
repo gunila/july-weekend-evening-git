@@ -19,7 +19,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'php' ]  # adjust as needed
+        language: [ 'javascript', 'php', 'java' ]  # Now includes Java
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -28,6 +29,11 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
+
+      # 🛠️ Required: Build for Java
+      - name: Build with Maven
+        if: matrix.language == 'java'
+        run: mvn install -DskipTests
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
