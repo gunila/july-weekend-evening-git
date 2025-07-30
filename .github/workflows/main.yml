@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL - Java only"
 
 on:
   push:
@@ -10,24 +10,27 @@ on:
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze Java
     runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
       security-events: write
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript', 'php' ]  # adjust as needed
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
+          languages: java
+
+      - name: Build with Maven
+        run: mvn install -DskipTests
+
+      - name: Debug:Check compiled classes
+        run: find . -name "*.class"
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
