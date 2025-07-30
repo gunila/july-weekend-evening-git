@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'php' ]  # adjust as needed
+        language: [ 'java']  # adjust as needed
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
