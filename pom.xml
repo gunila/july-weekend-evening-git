@@ -7,7 +7,7 @@
 
   <groupId>tz.co.ubx</groupId>
   <artifactId>july-weekend-evening-git</artifactId>
-  <version>v1.0.4</version>
+  <version>v1.0.5</version>
   <packaging>jar</packaging>  <!-- main artifact will be JAR -->
 
   <name>July Weekend Batch</name>
